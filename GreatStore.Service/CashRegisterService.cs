@@ -1,6 +1,8 @@
 ﻿using AutoMapper;
 using GreatStore.Contracts.DataContracts;
+using GreatStore.Contracts.ServiceContracts;
 using GreatStore.Models;
+using GreatStore.Models.Enums;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -11,11 +13,13 @@ namespace GreatStore.Service
     {
         private readonly IMapper mapper;
         private IStockData stockData;
+        private IStockService stockService;
         private ResultVM result = null;
 
-        public CashRegisterService(IMapper mapper, IStockData stockData)
+        public CashRegisterService(IMapper mapper, IStockService stockService, IStockData stockData)
         {
             this.mapper = mapper;
+            this.stockService = stockService;
             this.stockData = stockData;
             result = new ResultVM();
         }
@@ -26,28 +30,18 @@ namespace GreatStore.Service
         /// <param name="itemId"></param>
         /// <param name="buyerQuantity"></param>
         /// <param name="pounds"></param>
-        public ResultVM AddItemToCart(ushort itemId, ushort buyerQuantity, double pounds = 0)
+        public ResultVM AddItemToCart(uint code, ushort buyerQuantity, double pounds = 0)
         {
             var ResultVM = new ResultVM();
             try
             {
-                var stock = groceryManager.GetGroceryStock();
-                var stockItem = stock.Items.Find(i => i.Id == itemId);
-                if (stockItem != null && stockItem.StockQuantity >= buyerQuantity)
+                var item = stockData.GetItemByCode(code);
+                if (item != null && item.Units >= buyerQuantity)
                 {
-                    var buyerItem = new BuyerItem
-                    {
-                        Id = stockItem.Id,
-                        Name = stockItem.Name,
-                        PriceBy = stockItem.PriceBy,
-                        SaleType = stockItem.SaleType,
-                        Price = stockItem.Price,
-                        Units = buyerQuantity,
-                        Weight = pounds
-                    };
+                    var buyerItem = mapper.Map<BuyerItemVM>(item);
                     buyerItem.FreeUnits = GetFreeItemCount(buyerItem);
                     buyerItem.Price = GetFinalItemPrice(buyerItem);
-                    groceryManager.ReduceStockCount(buyerItem);
+                    stockService.ReduceStockAsUnits(buyerItem.Code, buyerItem.Units);
                     shoppingCart.Items.Add(buyerItem);
                     ResultVM.Message = Message.ItemAddedToCart;
                 }
@@ -97,11 +91,11 @@ namespace GreatStore.Service
         /// </summary>
         /// <param name="shoppingCart"></param>
         /// <returns></returns>
-        public GroceryBill FinishShopping(ShoppingCart shoppingCart)
+        public GroceryBillVM FinishShopping(ShoppingCartVM shoppingCart)
         {
             try
             {
-                var bill = new GroceryBill
+                var bill = new GroceryBillVM
                 {
                     Id = Guid.NewGuid(),
                     Date = DateTime.Now,
@@ -165,7 +159,7 @@ namespace GreatStore.Service
         /// </summary>
         /// <param name="item"></param>
         /// <returns></returns>
-        private decimal GetFinalItemPrice(BuyerItem item)
+        private decimal GetFinalItemPrice(BuyerItemVM item)
         {
             try
             {
@@ -192,7 +186,7 @@ namespace GreatStore.Service
         /// <param name="item"></param>
         /// <param name="buyerQuantity"></param>
         /// <returns>No of items that the buyer can get free</returns>
-        private ushort GetFreeItemCount(BuyerItem item)
+        private ushort GetFreeItemCount(ItemVM item)
         {
             ushort freeItemCount = 0;
             try

@@ -3,6 +3,7 @@ using GreatStore.Contracts.DataContracts;
 using GreatStore.Contracts.ServiceContracts;
 using GreatStore.Data.Models;
 using GreatStore.Models;
+using GreatStore.Models.Enums;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -113,7 +114,7 @@ namespace GreatStore.Service
             return result;
         }
 
-        public ResultVM AddStockAsUints(uint code, long units)
+        public ResultVM AddStockAsUints(uint code, ulong units)
         {
             try
             {
@@ -137,7 +138,7 @@ namespace GreatStore.Service
             return result;
         }
 
-        public ResultVM ReduceStockAsUnits(uint code, long units)
+        public ResultVM ReduceStockAsUnits(uint code, ulong units)
         {
             try
             {

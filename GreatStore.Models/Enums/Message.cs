@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace GreatStore.Models
+namespace GreatStore.Models.Enums
 {
     public enum Message
     {

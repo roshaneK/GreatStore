@@ -7,6 +7,6 @@ namespace GreatStore.Models
         public Guid Id { get; set; }
         public uint Code { get; set; }
         public string Name { get; set; }
-        public double UnitPrice { get; set; }
+        public decimal Price { get; set; }
     }
 }

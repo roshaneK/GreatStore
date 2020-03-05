@@ -9,8 +9,8 @@ namespace GreatStore.Contracts.ServiceContracts
         ResultVM AddItem(ItemVM itemVM);
         ResultVM UpdateItem(ItemVM itemVM);
         ResultVM RemoveItem(uint code);
-        ResultVM AddStockAsUints(uint code, long units);
-        ResultVM ReduceStockAsUnits(uint code, long units);
+        ResultVM AddStockAsUints(uint code, ulong units);
+        ResultVM ReduceStockAsUnits(uint code, ulong units);
         
     }
 }
