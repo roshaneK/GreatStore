@@ -13,7 +13,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GreatStore.Data.Models", "G
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GreatStore.Models", "GreatStore.Models\GreatStore.Models.csproj", "{9926BF8B-7E17-4DCE-9416-A86E3FA33E3E}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GreatStore.Stock", "GreatStore.Stock\GreatStore.Stock.csproj", "{811E6568-7A16-4278-9D48-BFE0DD8095C7}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GreatStore.Service", "GreatStore.Service\GreatStore.Service.csproj", "{2C9FA226-E68B-4336-9F24-DA9D770FAF10}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -41,10 +41,10 @@ Global
 		{9926BF8B-7E17-4DCE-9416-A86E3FA33E3E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9926BF8B-7E17-4DCE-9416-A86E3FA33E3E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{9926BF8B-7E17-4DCE-9416-A86E3FA33E3E}.Release|Any CPU.Build.0 = Release|Any CPU
-		{811E6568-7A16-4278-9D48-BFE0DD8095C7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{811E6568-7A16-4278-9D48-BFE0DD8095C7}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{811E6568-7A16-4278-9D48-BFE0DD8095C7}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{811E6568-7A16-4278-9D48-BFE0DD8095C7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2C9FA226-E68B-4336-9F24-DA9D770FAF10}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2C9FA226-E68B-4336-9F24-DA9D770FAF10}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2C9FA226-E68B-4336-9F24-DA9D770FAF10}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2C9FA226-E68B-4336-9F24-DA9D770FAF10}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

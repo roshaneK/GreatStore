@@ -1,0 +1,14 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\GreatStore.Contracts\GreatStore.Contracts.csproj" />
+    <ProjectReference Include="..\GreatStore.Data.Models\GreatStore.Data.Models.csproj" />
+    <ProjectReference Include="..\GreatStore.Data\GreatStore.Data.csproj" />
+    <ProjectReference Include="..\GreatStore.Models\GreatStore.Models.csproj" />
+  </ItemGroup>
+
+</Project>

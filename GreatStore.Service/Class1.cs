@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace GreatStore.Stock
+namespace GreatStore.Service
 {
     public class Class1
     {
