@@ -5,6 +5,10 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="7.0.0" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\GreatStore.Contracts\GreatStore.Contracts.csproj" />
     <ProjectReference Include="..\GreatStore.Data.Models\GreatStore.Data.Models.csproj" />
     <ProjectReference Include="..\GreatStore.Data\GreatStore.Data.csproj" />
