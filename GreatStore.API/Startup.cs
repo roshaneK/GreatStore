@@ -3,8 +3,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using AutoMapper;
+using GreatStore.Contracts.DataContracts;
 using GreatStore.Contracts.ServiceContracts;
 using GreatStore.Data;
+using GreatStore.Data.StockDataLayer;
 using GreatStore.Service;
 using GreatStore.Service.MapperProfiles;
 using Microsoft.AspNetCore.Builder;
@@ -32,6 +34,7 @@ namespace GreatStore.API
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddScoped<IStockService, StockService>();
+            services.AddScoped<IStockData, StockData>();
 
             services.AddDbContext<StoreDbContext>(options => options.UseSqlServer(Configuration["ConnectionString:GreatStoreDb"]));
 

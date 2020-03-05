@@ -19,10 +19,38 @@ namespace GreatStore.API.Controllers
             this.stockService = stockService;
         }
 
+        [HttpGet("GetItemByCode")]
+        public IActionResult GetItemByCode(uint code)
+        {
+            var result = stockService.GetItemByCode(code);
+            return Ok(result);
+        }
+
         [HttpPost("AddItem")]
-        public IActionResult SaveUser(ItemVM  item)
+        public IActionResult AddItem(ItemVM  item)
         {
             var result = stockService.AddItem(item);
+            return Ok(result);
+        }
+
+        [HttpPost("UpdateItem")]
+        public IActionResult UpdateItem(ItemVM item)
+        {
+            var result = stockService.UpdateItem(item);
+            return Ok(result);
+        }
+
+        [HttpPost("DeleteItem")]
+        public IActionResult DeleteItem(uint code)
+        {
+            var result = stockService.RemoveItem(code);
+            return Ok(result);
+        }
+
+        [HttpPost("AddStockAsUints")]
+        public IActionResult AddStockAsUints(uint code, long units)
+        {
+            var result = stockService.AddStockAsUints(code, units);
             return Ok(result);
         }
     }

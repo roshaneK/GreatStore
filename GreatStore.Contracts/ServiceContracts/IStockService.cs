@@ -5,6 +5,12 @@ namespace GreatStore.Contracts.ServiceContracts
 {
     public interface IStockService
     {
-        public ResultVM AddItem(ItemVM item);
+        ResultVM GetItemByCode(uint code);
+        ResultVM AddItem(ItemVM itemVM);
+        ResultVM UpdateItem(ItemVM itemVM);
+        ResultVM RemoveItem(uint code);
+        ResultVM AddStockAsUints(uint code, long units);
+        ResultVM ReduceStockAsUnits(uint code, long units);
+        
     }
 }

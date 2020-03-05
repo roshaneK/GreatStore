@@ -6,7 +6,7 @@ namespace GreatStore.Models
 {
     public class ResultVM
     {
-        public int Message { get; set; }
+        public Message Message { get; set; }
         public object Result { get; set; }
     }
 }

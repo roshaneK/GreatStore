@@ -1,12 +1,13 @@
 ﻿using GreatStore.Data.Models;
-using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace GreatStore.Contracts.DataContracts
 {
     public interface IStockData
     {
-        public void AddItem(Item item);
+        Item GetItemByCode(uint code);
+        bool IsItemExists(Item item);
+        void AddItem(Item item);
+        void UpdateItem(Item item);
+        void RemoveItem(Item item);
     }
 }
